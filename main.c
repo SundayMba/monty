@@ -76,6 +76,12 @@ char **_strtok(char *line)
 		token = strtok(NULL, sep);
 	}
 	line_token[token_count] = NULL;
+	/* handle comment */
+	if (line_token[0][0] == '#')
+	{
+		freeMemory(line_token);
+		return (NULL);
+	}
 	return (line_token);
 }
 

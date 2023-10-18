@@ -14,7 +14,7 @@ void process_op(char **tokens, unsigned int line, stack_t **stack, FILE *file)
 	int opcode_state = 0, valid, arg, i;
 	instruction_t instruction[] = {
 		{"pop", pop}, {"pall", pall}, {"nop", nop}, {"#", hash},
-		{"mod", mul}, {"mul", mul}, {"div", div_op}, {"sub", sub},
+		{"mod", mod}, {"mul", mul}, {"div", div_op}, {"sub", sub},
 		{"add", add}, {"swap", swap}, {"pint", pint}, {NULL, NULL}
 	};
 
