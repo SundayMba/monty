@@ -4,11 +4,12 @@
  * process_op - process operation codes
  * @tokens: opcode and it argument
  * @line: opcode line number
+ * @file: file
  * @stack: pointer to pointer that points to stack
  * Return: void
  */
 
-void process_op(char **tokens, unsigned int line, _stack_t **stack, FILE *file)
+void process_op(char **tokens, unsigned int line, stack_t **stack, FILE *file)
 {
 	int opcode_state = 0, valid, arg, i;
 	instruction_t instruction[] = {
@@ -92,9 +93,9 @@ char *_strdup(char *src)
  * Return: void
  */
 
-void freeStack(_stack_t *stack)
+void freeStack(stack_t *stack)
 {
-	_stack_t *tmp;
+	stack_t *tmp;
 
 	if (stack == NULL)
 		return;
@@ -114,7 +115,7 @@ void freeStack(_stack_t *stack)
  * Return: void
  */
 
-void pclean(char **tokens, FILE *file, _stack_t **stack)
+void pclean(char **tokens, FILE *file, stack_t **stack)
 {
 	freeMemory(tokens);
 	fclose(file);

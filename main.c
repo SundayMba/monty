@@ -12,7 +12,8 @@ int main(int argc, char **argv)
 	int line_number = 0;
 	char opcode[SIZE], *line, **line_tokens;
 	FILE *file;
-	_stack_t *stack = NULL;
+	stack_t *stack = NULL;
+	content_t infoTray = {NULL, NULL, NULL};
 
 	/* check for valid item argument and handle errors */
 	if (argc != 2)
@@ -28,17 +29,20 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	line = fgets(opcode, SIZE, file);
+	infoTray.file = file;
+	infoTray.stack = &stack;
 	while (feof(file) == 0 && line != NULL)
 	{
 		line_number++;
 		/* tokenize the string line */
 		line_tokens = _strtok(line);
+		infoTray.token = line_tokens;
 		/* printTokens(line_tokens); */
 		if (line_tokens != NULL)
 			process_op(line_tokens, line_number, &stack, file);
 		line = fgets(opcode, SIZE, file);
 	}
-	fclose(file);
+	pclean(infoTray.token, infoTray.file, infoTray.stack);
 	return (0);
 }
 

@@ -7,15 +7,16 @@
  * Return: void
  */
 
-void add(_stack_t **stack, unsigned int line)
+void add(stack_t **stack, unsigned int line)
 {
 	char *err;
-	_stack_t *tmp;
+	stack_t *tmp;
 
 	err = "can't add, stack too short";
 	if (stack_len(*stack) < 2)
 	{
 		fprintf(stderr, "L%d: %s\n", line, err);
+		pclean(infoTray.token, infoTray.file, infoTray.stack);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
@@ -32,7 +33,7 @@ void add(_stack_t **stack, unsigned int line)
  * Return: void
  */
 
-void nop(_stack_t **stack, unsigned int line)
+void nop(stack_t **stack, unsigned int line)
 {
 	(void)stack;
 	(void)line;
@@ -44,7 +45,7 @@ void nop(_stack_t **stack, unsigned int line)
  * Return: stack length
  */
 
-int stack_len(_stack_t *stack)
+int stack_len(stack_t *stack)
 {
 	int len;
 
