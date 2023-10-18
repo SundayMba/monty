@@ -124,7 +124,7 @@ void rotl(stack_t **stack, unsigned int line)
 
 void rotr(stack_t **stack, unsigned int line)
 {
-	stack_t *last, *first;
+	stack_t *last, *first, *prev;
 	(void)line;
 
 	if (stack_len(*stack) < 2)
