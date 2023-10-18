@@ -15,8 +15,6 @@ void push(stack_t **stack,  int n)
 	if (new == NULL)
 	{
 		fprintf(stderr, "%s\n", "Error: malloc failed");
-		if (infoTray.token != NULL)
-			freeMemory(infoTray.token);
 		if (infoTray.stack != NULL)
 			freeStack(infoTray.stack);
 		if (infoTray.file != NULL)
@@ -93,8 +91,6 @@ void pop(stack_t **stack, unsigned int line)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: %s\n", line, err);
-		if (infoTray.token != NULL)
-			freeMemory(infoTray.token);
 		if (infoTray.stack != NULL)
 			freeStack(infoTray.stack);
 		if (infoTray.file != NULL)
@@ -124,8 +120,6 @@ void swap(stack_t **stack, unsigned int line)
 	if (stack_len(*stack) < 2)
 	{
 		fprintf(stderr, "L%d: %s\n", line, err);
-		if (infoTray.token != NULL)
-			freeMemory(infoTray.token);
 		if (infoTray.stack != NULL)
 			freeStack(infoTray.stack);
 		if (infoTray.file != NULL)
