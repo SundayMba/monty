@@ -39,6 +39,7 @@ void add(stack_t **stack, unsigned int line)
 void pchar(stack_t **stack, unsigned int line)
 {
 	char *err1, *err2;
+	stack_t *tmp;
 
 	err1 = "can't pchar, stack empty";
 	err2 = "can't pchar, value out of range";
