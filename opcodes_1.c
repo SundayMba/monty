@@ -15,7 +15,12 @@ void push(stack_t **stack,  int n)
 	if (new == NULL)
 	{
 		fprintf(stderr, "%s\n", "Error: malloc failed");
-		pclean(infoTray.token, infoTray.file, infoTray.stack);
+		if (infoTray.token != NULL)
+			freeMemory(infoTray.token);
+		if (infoTray.stack != NULL)
+			freeStack(infoTray.stack);
+		if (infoTray.file != NULL)
+			fclose(file);
 		exit(EXIT_FAILURE);
 	}
 	new->n = n;
@@ -63,7 +68,12 @@ void pint(stack_t **stack, unsigned int line)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: %s\n", line, err);
-		pclean(infoTray.token, infoTray.file, infoTray.stack);
+		if (infoTray.token != NULL)
+			freeMemory(infoTray.token);
+		if (infoTray.stack != NULL)
+			freeStack(infoTray.stack);
+		if (infoTray.file != NULL)
+			fclose(file);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
@@ -85,7 +95,12 @@ void pop(stack_t **stack, unsigned int line)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: %s\n", line, err);
-		pclean(infoTray.token, infoTray.file, infoTray.stack);
+		if (infoTray.token != NULL)
+			freeMemory(infoTray.token);
+		if (infoTray.stack != NULL)
+			freeStack(infoTray.stack);
+		if (infoTray.file != NULL)
+			fclose(file);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
@@ -111,7 +126,12 @@ void swap(stack_t **stack, unsigned int line)
 	if (stack_len(*stack) < 2)
 	{
 		fprintf(stderr, "L%d: %s\n", line, err);
-		pclean(infoTray.token, infoTray.file, infoTray.stack);
+		if (infoTray.token != NULL)
+			freeMemory(infoTray.token);
+		if (infoTray.stack != NULL)
+			freeStack(infoTray.stack);
+		if (infoTray.file != NULL)
+			fclose(file);
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*stack)->n;
