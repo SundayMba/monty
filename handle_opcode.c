@@ -61,7 +61,7 @@ int check_valid_int(char *str)
 	char *numbers;
 	int i;
 
-	numbers = "0123456789";
+	numbers = "0123456789-";
 	if (str == NULL)
 		return (-1);
 	for (i = 0; str[i] != '\0'; i++)
