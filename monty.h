@@ -75,6 +75,7 @@ void freeMemory(char **tokens);
 char *_strdup(char *src);
 void freeStack(stack_t **stack);
 void sub(stack_t **stack, unsigned int line);
+void pchar(stack_t **stack, unsigned int line);
 void div_op(stack_t **stack, unsigned int line);
 void hash(stack_t **stack, unsigned int line);
 void mod(stack_t **stack, unsigned int line);

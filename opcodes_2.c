@@ -29,4 +29,38 @@ void add(stack_t **stack, unsigned int line)
 	free(tmp);
 }
 
+/**
+ * pchar - print the value at the top stack as ascii
+ * @line: line number
+ * @stack: pointer to the beginning of the stack frame
+ * Return: void
+ */
+
+void pchar(stack_t **stack, unsigned int line)
+{
+	char *err1, *err2;
+
+	err1 = "can't pchar, stack empty";
+	err2 = "can't pchar, value out of range";
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: %s\n", line, err1);
+		if (infoTray.stack != NULL)
+			freeStack(infoTray.stack);
+		if (infoTray.file != NULL)
+			fclose(infoTray.file);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n >= 0 && (*stack)->n <= 127)
+	{
+		printf("%c\n", (*stack)->n);
+		return;
+	}
+	fprintf(stderr, "L%d: %s\n", line, err2);
+	if (infoTray.stack != NULL)
+	freeStack(infoTray.stack);
+	if (infoTray.file != NULL)
+	fclose(infoTray.file);
+	exit(EXIT_FAILURE);
+}
 

@@ -1,1 +1,2 @@
-#pint
+push 72
+pchar
