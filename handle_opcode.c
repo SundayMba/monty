@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * process_opcode - process operation codes
+ * process_op - process operation codes
  * @tokens: opcode and it argument
  * @line: opcode line number
  * @stack: pointer to pointer that points to stack
  * Return: void
  */
 
-void process_opcode(char **tokens, unsigned int line, _stack_t **stack)
+void process_op(char **tokens, unsigned int line, _stack_t **stack, FILE *file)
 {
 	int opcode_state = 0, valid, arg, i;
 	instruction_t instruction[] = {
@@ -34,8 +34,8 @@ void process_opcode(char **tokens, unsigned int line, _stack_t **stack)
 		valid = check_valid_int(tokens[1]);
 		if (valid == -1)
 		{
-			freeMemory(tokens);
 			fprintf(stderr, "L%u: usage: push integer\n", line);
+			pclean(tokens, file, stack);
 			exit(EXIT_FAILURE);
 		}
 		arg = atoi(tokens[1]);
@@ -43,8 +43,8 @@ void process_opcode(char **tokens, unsigned int line, _stack_t **stack)
 		push(stack, arg);
 		return;
 	}
-	freeMemory(tokens);
 	fprintf(stderr, "L%u: unknown instruction %s\n", line, tokens[0]);
+	pclean(tokens, file, stack);
 	exit(EXIT_FAILURE);
 }
 
@@ -69,3 +69,55 @@ int check_valid_int(char *str)
 	}
 	return (0);
 }
+
+/**
+ * _strdup - string duplication
+ * @src: source string
+ * Return: a pointer to the destination string
+ */
+
+char *_strdup(char *src)
+{
+	char *dest;
+
+	dest = malloc(sizeof(char) * (strlen(src) + 1));
+	if (dest)
+		strcpy(dest, src);
+	return (dest);
+}
+
+/**
+ * freeStack - free the stack memory
+ * @stack: pointer to the stack
+ * Return: void
+ */
+
+void freeStack(_stack_t *stack)
+{
+	_stack_t *tmp;
+
+	if (stack == NULL)
+		return;
+	while (stack != NULL)
+	{
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
+	}
+}
+
+/**
+ * pclean - clean the program before exiting
+ * @tokens: tokens memory
+ * @file: file memory
+ * @stack: stack memory
+ * Return: void
+ */
+
+void pclean(char **tokens, FILE *file, _stack_t **stack)
+{
+	freeMemory(tokens);
+	fclose(file);
+	freeStack(*stack);
+}
+

@@ -35,9 +35,10 @@ int main(int argc, char **argv)
 		line_tokens = _strtok(line);
 		/* printTokens(line_tokens); */
 		if (line_tokens != NULL)
-			process_opcode(line_tokens, line_number, &stack);
+			process_op(line_tokens, line_number, &stack, file);
 		line = fgets(opcode, SIZE, file);
 	}
+	fclose(file);
 	return (0);
 }
 
@@ -55,20 +56,17 @@ char **_strtok(char *line)
 	sep = " \n\t";
 	if (line == NULL)
 		return (NULL);
-	token_count = tokCount(strdup(line), sep);
+	token_count = tokCount(_strdup(line), sep);
 	if (token_count <= 0)
 		return (NULL);
 	line_token = (char **)malloc(sizeof(char *) * (token_count + 1));
 	if (line_token == NULL)
-	{
-		fprintf(stderr, "%s\n", "Error: malloc failed");
-		exit(EXIT_FAILURE);
-	}
+		return (NULL);
 	token = strtok(line, sep);
 	token_count = 0;
 	while (token != NULL)
 	{
-		line_token[token_count++] = strdup(token);
+		line_token[token_count++] = _strdup(token);
 		token = strtok(NULL, sep);
 	}
 	line_token[token_count] = NULL;

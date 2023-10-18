@@ -35,11 +35,12 @@ typedef struct instruction_s
 	void (*f)(_stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
 char **_strtok(char *line);
 int tokCount(char *line, char *sep);
 void push(_stack_t **stack, int data);
 int check_valid_int(char *str);
-void process_opcode(char **tokens, unsigned int line, _stack_t **stack);
+void process_op(char **tokens, unsigned int line, _stack_t **stack, FILE *);
 void swap(_stack_t **stack, unsigned int line);
 void pop(_stack_t **stack, unsigned int line);
 void pint(_stack_t **stack, unsigned int line);
@@ -50,5 +51,8 @@ void nop(_stack_t **stack, unsigned int line);
 void add(_stack_t **stack, unsigned int line);
 void printTokens(char **tokens);
 void freeMemory(char **tokens);
+char *_strdup(char *src);
+void freeStack(_stack_t *stack);
+void pclean(char **, FILE *, _stack_t **);
 
 #endif
