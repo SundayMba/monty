@@ -20,7 +20,7 @@ void push(stack_t **stack,  int n)
 		if (infoTray.stack != NULL)
 			freeStack(infoTray.stack);
 		if (infoTray.file != NULL)
-			fclose(file);
+			fclose(infoTray.file);
 		exit(EXIT_FAILURE);
 	}
 	new->n = n;
@@ -73,7 +73,7 @@ void pint(stack_t **stack, unsigned int line)
 		if (infoTray.stack != NULL)
 			freeStack(infoTray.stack);
 		if (infoTray.file != NULL)
-			fclose(file);
+			fclose(infoTray.file);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
@@ -100,7 +100,7 @@ void pop(stack_t **stack, unsigned int line)
 		if (infoTray.stack != NULL)
 			freeStack(infoTray.stack);
 		if (infoTray.file != NULL)
-			fclose(file);
+			fclose(infoTray.file);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
@@ -131,7 +131,7 @@ void swap(stack_t **stack, unsigned int line)
 		if (infoTray.stack != NULL)
 			freeStack(infoTray.stack);
 		if (infoTray.file != NULL)
-			fclose(file);
+			fclose(infoTray.file);
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*stack)->n;
