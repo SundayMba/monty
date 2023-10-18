@@ -16,6 +16,7 @@ void process_op(char **tokens, unsigned int line, stack_t **stack, FILE *file)
 		{"pop", pop}, {"pall", pall}, {"nop", nop}, {"#", hash},
 		{"mod", mod}, {"mul", mul}, {"div", div_op}, {"sub", sub},
 		{"pchar", pchar}, {"pstr", pstr}, {"rotl", rotl},
+		{"rotr", rotr},
 		{"add", add}, {"swap", swap}, {"pint", pint}, {NULL, NULL}
 	};
 
