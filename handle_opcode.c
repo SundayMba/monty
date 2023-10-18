@@ -118,10 +118,11 @@ void freeStack(stack_t **stack)
 
 void pclean(char **tokens, FILE *file, stack_t **stack)
 {
-	freeMemory(tokens);
+	if (tokens != NULL)
+		freeMemory(tokens);
 	if (file != NULL)
 		fclose(file);
-	if (*stack != NULL)
+	if (stack != NULL)
 		freeStack(stack);
 }
 
