@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 			process_op(line_tokens, line_number, &stack, file);
 		line = fgets(opcode, SIZE, file);
 	}
-	pclean(infoTray.token, infoTray.file, infoTray.stack);
+	pclean(line_tokens, file, &stack);
 	return (0);
 }
 
@@ -113,7 +113,10 @@ void freeMemory(char **tokens)
 	if (tokens != NULL)
 	{
 		for (i = 0; tokens[i]; i++)
-			free(tokens[i]);
+		{
+			if (tokens[i] != NULL)
+				free(tokens[i]);
+		}
 		free(tokens);
 	}
 }
