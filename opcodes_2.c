@@ -51,16 +51,16 @@ void pchar(stack_t **stack, unsigned int line)
 			fclose(infoTray.file);
 		exit(EXIT_FAILURE);
 	}
-	if ((*stack)->n >= 0 && (*stack)->n <= 127)
+	tmp = *stack;
+	if (tmp->n > 127 || tmp < 0)
 	{
-		printf("%c\n", (*stack)->n);
-		return;
+		fprintf(stderr, "L%d: %s\n", line, err2);
+		if (infoTray.stack != NULL)
+			freeStack(infoTray.stack);
+		if (infoTray.file != NULL)
+			fclose(infoTray.file);
+		exit(EXIT_FAILURE);
 	}
-	fprintf(stderr, "L%d: %s\n", line, err2);
-	if (infoTray.stack != NULL)
-	freeStack(infoTray.stack);
-	if (infoTray.file != NULL)
-	fclose(infoTray.file);
-	exit(EXIT_FAILURE);
+	printf("%c\n", tmp->n);
 }
 
