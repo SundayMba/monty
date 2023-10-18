@@ -29,34 +29,4 @@ void add(stack_t **stack, unsigned int line)
 	free(tmp);
 }
 
-/**
- * nop - no operation
- * @line: line number
- * @stack: pointer to the beginning of the stack frame
- * Return: void
- */
 
-void nop(stack_t **stack, unsigned int line)
-{
-	(void)stack;
-	(void)line;
-}
-
-/**
- * stack_len - Get the length of the stack
- * @stack: pointer to the beginning of the stack frame
- * Return: stack length
- */
-
-int stack_len(stack_t *stack)
-{
-	int len;
-
-	len = 0;
-	while (stack != NULL)
-	{
-		len++;
-		stack = stack->next;
-	}
-	return (len);
-}
