@@ -65,3 +65,28 @@ void pchar(stack_t **stack, unsigned int line)
 	printf("%c\n", tmp->n);
 }
 
+/**
+ * pstr - print all value of  stack as ascii
+ * @line: line number
+ * @stack: pointer to the beginning of the stack frame
+ * Return: void
+ */
+
+void pstr(stack_t **stack, unsigned int line)
+{
+	stack_t *tmp;
+
+	if (*stack == NULL)
+	{
+		printf("\n");
+		return;
+	}
+	tmp = *stack;
+	while (tmp && tmp->n != 0 && tmp->n > 0 && tmp->n <= 127)
+	{
+		printf("%c", tmp->n);
+		tmp = tmp->next;
+	}
+	printf("\n");
+}
+
