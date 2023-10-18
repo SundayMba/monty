@@ -121,6 +121,6 @@ void pclean(char **tokens, FILE *file, stack_t **stack)
 	if (file != NULL)
 		fclose(file);
 	if (*stack != NULL)
-		freeStack(*stack);
+		freeStack(stack);
 }
 

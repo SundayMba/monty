@@ -42,7 +42,8 @@ int main(int argc, char **argv)
 			process_op(line_tokens, line_number, &stack, file);
 		line = fgets(opcode, SIZE, file);
 	}
-	pclean(line_tokens, file, &stack);
+	fclose(file);
+	freeStack(&stack);
 	return (0);
 }
 

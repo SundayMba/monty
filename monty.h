@@ -67,7 +67,7 @@ void add(stack_t **stack, unsigned int line);
 void printTokens(char **tokens);
 void freeMemory(char **tokens);
 char *_strdup(char *src);
-void freeStack(stack_t *stack);
+void freeStack(stack_t **stack);
 void pclean(char **, FILE *, stack_t **);
 
 #endif
