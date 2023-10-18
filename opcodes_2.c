@@ -100,7 +100,7 @@ void pstr(stack_t **stack, unsigned int line)
 
 void rotl(stack_t **stack, unsigned int line)
 {
-	stack_t *last;
+	stack_t *last, *first;
 	(void)line;
 
 	if (stack_len(*stack) < 2)
