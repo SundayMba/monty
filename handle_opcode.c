@@ -15,10 +15,10 @@ void process_op(char **tokens, unsigned int line, stack_t **stack, FILE *file)
 	instruction_t instruction[] = {
 		{"pop", pop}, {"pall", pall}, {"nop", nop}, {"#", hash},
 		{"mod", mod}, {"mul", mul}, {"div", div_op}, {"sub", sub},
+		{"pchar", pchar},
 		{"add", add}, {"swap", swap}, {"pint", pint}, {NULL, NULL}
 	};
 
-	/* printTokens(tokens); */
 	for (i = 0; instruction[i].opcode && tokens[0]; i++)
 	{
 		if (strstr(instruction[i].opcode, tokens[0]) != NULL)
