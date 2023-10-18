@@ -95,7 +95,7 @@ char *_strdup(char *src)
 
 void freeStack(stack_t **stack)
 {
-	stack_t *tmp, tmp1;
+	stack_t *tmp, *tmp1;
 
 	if (*stack == NULL)
 		return;
