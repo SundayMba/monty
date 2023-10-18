@@ -91,3 +91,27 @@ void pstr(stack_t **stack, unsigned int line)
 	printf("\n");
 }
 
+/**
+ * rotl - rotate stack by reversing only it top element
+ * @line: line number
+ * @stack: pointer to the beginning of the stack frame
+ * Return: void
+ */
+
+void rotl(stack_t **stack, unsigned int line)
+{
+	stack_t *last;
+	(void)line;
+
+	if (stack_len(*stack) < 2)
+		return;
+	last = *stack;
+	first = *stack;
+	while (last->next != NULL)
+		last = last->next;
+	last->next = first;
+	*stack = first->next;
+	first->next = NULL;
+	first->prev = last;
+}
+
