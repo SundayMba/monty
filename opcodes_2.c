@@ -16,7 +16,10 @@ void add(stack_t **stack, unsigned int line)
 	if (stack_len(*stack) < 2)
 	{
 		fprintf(stderr, "L%d: %s\n", line, err);
-		pclean(infoTray.token, infoTray.file, infoTray.stack);
+		if (infoTray.stack != NULL)
+			freeStack(infoTray.stack);
+		if (infoTray.file != NULL)
+			fclose(infoTray.file);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
