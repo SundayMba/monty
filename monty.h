@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+
 #define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,6 +9,8 @@
 #include <fcntl.h>
 #include <string.h>
 #include <ctype.h>
+
+#define SIZE 1024
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -15,7 +18,7 @@
  * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO Holberton project
+ * for stack, queues, LIFO, FIFO
  */
 typedef struct stack_s
 {
@@ -23,57 +26,54 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
-/**
- * struct bus_s - variables -args, file, line content
- * @arg: value
- * @file: pointer to monty file
- * @content: line content
- * @lifi: flag change stack <-> queue
- * Description: carries values through the program
- */
-typedef struct bus_s
-{
-	char *arg;
-	FILE *file;
-	char *content;
-	int lifi;
-}  bus_t;
-extern bus_t bus;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
  *
  * Description: opcode and its function
- * for stack, queues, LIFO, FIFO Holberton project
+ * for stack, queues, LIFO, FIFO
  */
 typedef struct instruction_s
 {
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
-ssize_t getstdin(char **lineptr, int file);
-char  *clean_line(char *content);
-void tlcpush(stack_t **head, unsigned int number);
-void tlcpall(stack_t **head, unsigned int number);
-void tlcpint(stack_t **head, unsigned int number);
-int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
-void free_stack(stack_t *head);
-void tlcpop(stack_t **head, unsigned int counter);
-void tlcswap(stack_t **head, unsigned int counter);
-void tlcadd(stack_t **head, unsigned int counter);
-void tlcnop(stack_t **head, unsigned int counter);
-void tlcsub(stack_t **head, unsigned int counter);
-void tlcdiv(stack_t **head, unsigned int counter);
-void tlcmul(stack_t **head, unsigned int counter);
-void tlcmod(stack_t **head, unsigned int counter);
-void tlcpchar(stack_t **head, unsigned int counter);
-void tlcpstr(stack_t **head, unsigned int counter);
-void tlcrotl(stack_t **head, unsigned int counter);
-void tlcrotr(stack_t **head, __attribute__((unused)) unsigned int counter);
-void addnode(stack_t **head, int n);
-void addqueue(stack_t **head, int n);
-void tlcqueue(stack_t **head, unsigned int counter);
-void tlcstack(stack_t **head, unsigned int counter);
+
+/**
+ * struct content_s - structure of content that will be used globally
+ * @token: array of tokens
+ * @stack: stack frame of nodes of opcode
+ * @file: open file
+ */
+
+typedef struct content_s
+{
+	char **token;
+	stack_t **stack;
+	FILE *file;
+} content_t;
+
+extern content_t infoTray;
+
+char **_strtok(char *line);
+int tokCount(char *line, char *sep);
+void push(stack_t **stack, int data);
+int check_valid_int(char *str);
+void process_op(char **tokens, unsigned int line, stack_t **stack, FILE *);
+void swap(stack_t **stack, unsigned int line);
+void pop(stack_t **stack, unsigned int line);
+void pint(stack_t **stack, unsigned int line);
+void pall(stack_t **stack, unsigned int line);
+void push(stack_t **stack, int n);
+int stack_len(stack_t *stack);
+void nop(stack_t **stack, unsigned int line);
+void add(stack_t **stack, unsigned int line);
+void printTokens(char **tokens);
+void freeMemory(char **tokens);
+char *_strdup(char *src);
+void freeStack(stack_t **stack);
+void pclean(char **, FILE *, stack_t **);
+
 #endif
