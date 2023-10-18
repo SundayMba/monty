@@ -93,17 +93,18 @@ char *_strdup(char *src)
  * Return: void
  */
 
-void freeStack(stack_t *stack)
+void freeStack(stack_t **stack)
 {
-	stack_t *tmp;
+	stack_t *tmp, tmp1;
 
-	if (stack == NULL)
+	if (*stack == NULL)
 		return;
-	while (stack != NULL)
+	tmp = *stack;
+	while (tmp != NULL)
 	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
+		tmp1 = tmp;
+		tmp = tmp->next;
+		free(tmp1);
 	}
 }
 
