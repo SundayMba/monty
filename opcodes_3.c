@@ -30,13 +30,13 @@ void sub(stack_t **stack, unsigned int line)
 }
 
 /**
- * div - divide the top two values of the stack
+ * div_op - divide the top two values of the stack
  * @line: line number
  * @stack: pointer to the beginning of the stack frame
  * Return: void
  */
 
-void div(stack_t **stack, unsigned int line)
+void div_op(stack_t **stack, unsigned int line)
 {
 	char *err1, *err2;
 	stack_t *tmp;
