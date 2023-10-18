@@ -1,5 +1,7 @@
 #include "monty.h"
 
+content_t infoTray = {NULL, NULL, NULL};
+
 /**
  * main - entry point of the program
  * @argv: a vector of the input argument
@@ -13,7 +15,6 @@ int main(int argc, char **argv)
 	char opcode[SIZE], *line, **line_tokens;
 	FILE *file;
 	stack_t *stack = NULL;
-	content_t infoTray = {NULL, NULL, NULL};
 
 	/* check for valid item argument and handle errors */
 	if (argc != 2)
