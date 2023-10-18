@@ -75,6 +75,7 @@ void pchar(stack_t **stack, unsigned int line)
 void pstr(stack_t **stack, unsigned int line)
 {
 	stack_t *tmp;
+	(void)line;
 
 	if (*stack == NULL)
 	{
