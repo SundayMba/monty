@@ -74,6 +74,12 @@ void printTokens(char **tokens);
 void freeMemory(char **tokens);
 char *_strdup(char *src);
 void freeStack(stack_t **stack);
+void sub(stack_t **stack, unsigned int line);
+void div(stack_t **stack, unsigned int line);
+void hash(stack_t **stack, unsigned int line);
+void mod(stack_t **stack, unsigned int line);
+void mul(stack_t **stack, unsigned int line);
 void pclean(char **, FILE *, stack_t **);
+
 
 #endif
