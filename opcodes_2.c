@@ -53,7 +53,7 @@ void pchar(stack_t **stack, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
-	if (tmp->n > 127 || tmp < 0)
+	if (tmp->n > 127 || tmp->n < 0)
 	{
 		fprintf(stderr, "L%d: %s\n", line, err2);
 		if (infoTray.stack != NULL)
