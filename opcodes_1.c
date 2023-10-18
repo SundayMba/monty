@@ -68,8 +68,6 @@ void pint(stack_t **stack, unsigned int line)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: %s\n", line, err);
-		if (infoTray.token != NULL)
-			freeMemory(infoTray.token);
 		if (infoTray.stack != NULL)
 			freeStack(infoTray.stack);
 		if (infoTray.file != NULL)
