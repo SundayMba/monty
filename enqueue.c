@@ -20,8 +20,10 @@ void enqueue(stack_t **stack, stack_t **new)
 			(*stack)->prev = *new;
 		*stack = *new;
 		infoTray.idx++;
+		infoTray.queue_ptr = *stack;
+		return;
 	}
-	tmp = *stack;
+	tmp = infoTray.queue_ptr;
 	for (i = 1; tmp && i < infoTray.idx; i++)
 		tmp = tmp->next;
 	(*new)->next = tmp->next;

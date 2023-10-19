@@ -11,7 +11,6 @@ char **queue(char **tokens)
 	if (strstr("queue", tokens[0]))
 	{
 		infoTray.state = "queue";
-		infoTray.idx = 0;
 		freeMemory(tokens);
 		return (NULL);
 	}

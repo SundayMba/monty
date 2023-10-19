@@ -47,6 +47,7 @@ typedef struct instruction_s
  * @stack: stack frame of nodes of opcode
  * @state: queue and stack state
  * @idx: index of the queue
+ * @queue_ptr: pointer to the beginnign of queue in the stack
  * @file: open file
  */
 
@@ -56,6 +57,7 @@ typedef struct content_s
 	stack_t **stack;
 	FILE *file;
 	char *state;
+	stack_t *queue_ptr;
 	int idx;
 } content_t;
 

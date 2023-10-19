@@ -1,6 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
-content_t infoTray = {NULL, NULL, NULL, NULL, -1};
+content_t infoTray = {NULL, NULL, NULL, NULL, NULL, 0};
 
 /**
  * main - entry point of the program
