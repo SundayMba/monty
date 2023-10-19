@@ -24,9 +24,9 @@ void push(stack_t **stack,  int n)
 	}
 	state = infoTray.state;
 	new->n = n;
-	if (state && strcmp("queue", state) == 0)
+	if (state && strstr("queue", state))
 	{
-		enqueue(stack, new);
+		enqueue(stack, &new);
 		return;
 	}
 	/* insert at the beginning of the stack */

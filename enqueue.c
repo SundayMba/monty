@@ -7,27 +7,27 @@
  * Return: void
  */
 
-void enqueue(stack_t **stack, stack_t *new)
+void enqueue(stack_t **stack, stack_t **new)
 {
 	stack_t *tmp;
 	int i;
 
 	if (infoTray.idx == 0)
 	{
-		new->next = *stack;
-		new->prev = NULL;
+		(*new)->next = *stack;
+		(*new)->prev = NULL;
 		if (*stack)
-			(*stack)->prev = new;
-		*stack = new;
+			(*stack)->prev = *new;
+		*stack = *new;
 		infoTray.idx++;
 	}
 	tmp = *stack;
 	for (i = 1; tmp && i < infoTray.idx; i++)
 		tmp = tmp->next;
-	new->next = tmp->next;
+	(*new)->next = tmp->next;
 	if (tmp->next != NULL)
-		tmp->next->prev = new;
-	new->prev = tmp;
-	tmp->next = new;
+		tmp->next->prev = *new;
+	(*new)->prev = tmp;
+	tmp->next = *new;
 	infoTray.idx++;
 }

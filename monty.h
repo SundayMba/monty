@@ -87,7 +87,7 @@ void div_op(stack_t **stack, unsigned int line);
 void hash(stack_t **stack, unsigned int line);
 void mod(stack_t **stack, unsigned int line);
 void mul(stack_t **stack, unsigned int line);
-void enqueue(stack_t **stack, stack_t *node);
+void enqueue(stack_t **stack, stack_t **node);
 void pclean(char **, FILE *, stack_t **);
 char **queue(char **tokens);
 char **stack(char **tokens);
