@@ -10,6 +10,7 @@
 void push(stack_t **stack,  int n)
 {
 	stack_t *new;
+	char *state;
 
 	new = (stack_t *)malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -21,7 +22,10 @@ void push(stack_t **stack,  int n)
 			fclose(infoTray.file);
 		exit(EXIT_FAILURE);
 	}
+	state = infoTray.state;
 	new->n = n;
+	if (state && strcmp("queue", state) == 0)
+		enqueue(stack, new);
 	/* insert at the beginning of the stack */
 	new->next = *stack;
 	new->prev = NULL;
