@@ -1,6 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
-content_t infoTray = {NULL, NULL, NULL};
+content_t infoTray = {NULL, NULL, NULL, NULL, -1};
 
 /**
  * main - entry point of the program
@@ -76,12 +76,18 @@ char **_strtok(char *line)
 		token = strtok(NULL, sep);
 	}
 	line_token[token_count] = NULL;
-	/* handle comment */
-	if (line_token[0][0] == '#')
-	{
-		freeMemory(line_token);
+	/* check comment */
+	line_token = comment(line_token);
+	if (line_token == NULL)
 		return (NULL);
-	}
+	/* check queue */
+	line_token = queue(line_token);
+	if (line_token == NULL)
+		return (NULL);
+	/* check stack */
+	line_token = stack(line_token);
+	if (line_token == NULL)
+		return (NULL);
 	return (line_token);
 }
 

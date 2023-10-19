@@ -45,6 +45,8 @@ typedef struct instruction_s
  * struct content_s - structure of content that will be used globally
  * @token: array of tokens
  * @stack: stack frame of nodes of opcode
+ * @state: queue and stack state
+ * @idx: index of the queue
  * @file: open file
  */
 
@@ -53,6 +55,8 @@ typedef struct content_s
 	char **token;
 	stack_t **stack;
 	FILE *file;
+	char *state;
+	int idx;
 } content_t;
 
 extern content_t infoTray;
@@ -84,6 +88,7 @@ void hash(stack_t **stack, unsigned int line);
 void mod(stack_t **stack, unsigned int line);
 void mul(stack_t **stack, unsigned int line);
 void pclean(char **, FILE *, stack_t **);
-
-
+char **queue(char **tokens);
+char **stack(char **tokens);
+char **comment(char **tokens);
 #endif
