@@ -10,6 +10,7 @@
 void enqueue(stack_t **stack, stack_t *new)
 {
 	stack_t *tmp;
+	int i;
 
 	if (infoTray.idx == 0)
 	{
